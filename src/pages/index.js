@@ -183,11 +183,7 @@ export default function Todo() {
       </Head>
       <h1>Time Blind</h1>
       <p>A reality check for folks who think they can do it all in a short amount of time</p>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
         <>
-
           <ul>
             <form className="add-task-container" onSubmit={addTask}>
               <input type="text" value={newTask} onChange={(e) => setNewTask(e.target.value)} placeholder="New task" />
@@ -231,7 +227,6 @@ export default function Todo() {
             ))}
           </ul>
         </>
-      )}
     </div>
   );
 }
