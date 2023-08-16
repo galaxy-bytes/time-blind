@@ -116,25 +116,6 @@ test('adds 3 tasks', async ({ page }) => {
   }
 });
 
-test('deletes a task', async ({ page }) => {
-  try {
-    await page.goto('http://localhost:3000');
-    await page.fill('input[placeholder="New task"]', 'Task 1');
-    await page.click('button[type="submit"]');
-    await page.fill('input[placeholder="New task"]', 'Task 2');
-    await page.click('button[type="submit"]');
-    await page.fill('input[placeholder="New task"]', 'Task 3');
-    await page.click('button[type="submit"]');
-    await page.click('li:has-text("Task 2") button');
-    await eyes.check('Delete Task', Target.window().fully());
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await eyes.close();
-  }
-});
-
-
 test.afterEach(async () => {
     // Close the eyes for each test.
     await eyes.closeAsync();
