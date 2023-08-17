@@ -1,13 +1,17 @@
 name: Playwright Tests
 on:
+  workflow_dispatch:
   push:
-    branches: [ main, staging ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, staging ]
+    branches: [ main ]
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      APPLITOOLS_API_KEY: ${{ secrets.APPLITOOLS_API_KEY }}
+      USER_NAME: ${{ secrets.USER_NAME }}
     steps:
     - uses: actions/checkout@v3
     - uses: actions/setup-node@v3
